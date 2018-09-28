@@ -1,0 +1,168 @@
+<html>
+<head>
+    <title>Physics 2211 Grade Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h1>What's my grade again?<br>
+            <small class="text-secondary">A tool for Physics 2211 students.</small>
+        </h1>
+        <hr>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-6">
+                <div class="form">
+                    <!--- Tests --->
+                    <h3>Tests</h3>
+                    <div class="form-group">
+                        <label>Test 1</label>
+                        <input class="form-control" type="number" value="74.19" id="test1">
+                    </div>
+                    <div class="form-group">
+                        <label>Test 2</label>
+                        <input class="form-control" type="number" value="74.19" id="test2">
+                    </div>
+                    <div class="form-group">
+                        <label>Test 3</label>
+                        <input class="form-control" type="number" value="74.19" id="test3">
+                    </div>
+                    <div class="form-group">
+                        <label>Test 4</label>
+                        <input class="form-control" type="number" value="74.19" id="test4">
+                    </div>
+                    <div class="form-group">
+                        <label>Final Exam</label>
+                        <input class="form-control" type="number" value="74.19" id="finalExam">
+                    </div>
+                    <!--- Labs --->
+                    <h3>Lab</h3>
+                    <div class="form-group">
+                        <label>Lab Participation</label>
+                        <input class="form-control" type="number" value="100" id="labParticipation">
+                    </div>
+                    <div class="form-group">
+                        <label>Lab Quizzes</label>
+                        <input class="form-control" type="number" value="46" id="labQuizzes">
+                    </div>
+                    <!--- The Bucket --->
+                    <h3>"The Bucket"</h3>
+                    <div class="form-group">
+                        <label>Homework</label>
+                        <input class="form-control" type="number" value="88.13" id="homework">
+                    </div>
+                    <div class="form-group">
+                        <label>Class Participation</label>
+                        <input class="form-control" type="number" value="90" id="classParticipation">
+                    </div>
+                    <div class="form-group">
+                        <label>Optional Assignments</label>
+                        <input class="form-control" type="number" value="31.03" id="optionalAssignments">
+                    </div>
+                    <div class="form-group">
+                        <label>Wiki Resource</label>
+                        <input class="form-control" type="number" value="0" id="wikiResource">
+                    </div>
+                    <div class="form-group">
+                        <label>Public Lecture Review</label>
+                        <input class="form-control" type="number" value="0" id="publicLectureReview">
+                    </div>
+                    <div class="form-group">
+                        <label>Reading Assignments</label>
+                        <input class="form-control" type="number" value="91.48" id="readingAssignments">
+                    </div>
+                    <button id="submit" class="btn btn-success">Calculate</button>
+                    <br><br>
+                    <div class="finalScore d-none">
+                        <h2 id="courseGrade">Course Grade: -1</h2>
+                        <h4 id="weightedTestAverage">Weighted Test Average: -1</h4>
+                        <h4 id="bucket">Bucket: 93</h4>
+                        <h4 id="homeworkExtraCredit">Homework Extra Credit: -1</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <footer class="text-center">
+            <hr>
+            <a href="https://github.com/tillson/whats-my-grade-physics">github</a>
+            <br><br>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $('#submit').click(function() {
+        calculate();
+    })
+
+    function calculate() {
+        var test1 = parseFloat($('#test1').val());
+        var test2 = parseFloat($('#test2').val());
+        var test3 = parseFloat($('#test3').val());
+        var test4 = parseFloat($('#test4').val());
+        var finalExam = parseFloat($('#finalExam').val());
+        var labParticipation = parseFloat($('#labParticipation').val());
+        var labQuizzes = parseFloat($('#labQuizzes').val());
+        var homework = parseFloat($('#homework').val());
+        var classParticipation = parseFloat($('#classParticipation').val());
+        var optionalAssignments = parseFloat($('#optionalAssignments').val());
+        var wikiResource = parseFloat($('#wikiResource').val());
+        var publicLectureReview = parseFloat($('#publicLectureReview').val());
+        var readingAssignments = parseFloat($('#readingAssignments').val());
+
+        var bucket = homework * (7 / 5) * 0.05 +
+            classParticipation * 0.04 +
+            optionalAssignments * 0.03 +
+            publicLectureReview * 0.01 +
+            wikiResource * 0.02 +
+            readingAssignments * 0.01;
+        bucket = bucket / 0.1;
+        if (bucket > 100) {
+            bucket = 100;
+        }
+
+        var homeworkExtraCredit =
+            Math.max(0, Math.min(
+                5,
+                homework * (7 / 5) * 0.05 +
+                classParticipation * 0.04 +
+                optionalAssignments * 0.03 +
+                wikiResource * 0.01 +
+                publicLectureReview * 0.02 +
+                readingAssignments * 0.01
+                - homework * (7 / 5) * 0.05
+            ) + homework * (7 / 5) * 0.05 - 10) / 2 * 100;
+
+        var sortedTestAverages = [test1, test2, test3, test4].sort();
+        console.log(sortedTestAverages);
+        var weightedTestAverage = (
+            sortedTestAverages[0] * 0.06 +
+            sortedTestAverages[1] * 0.09 +
+            sortedTestAverages[2] * 0.12 +
+            sortedTestAverages[3] * 0.18) / 0.45;
+
+        var finalGrade =
+            finalExam * 0.25 +
+            weightedTestAverage * 0.45 +
+            labParticipation * 0.15 +
+            labQuizzes * 0.05 +
+            bucket * 0.1 +
+            homeworkExtraCredit * 0.02;
+
+        $('#courseGrade').text("Course Grade: " + finalGrade.toFixed(2));
+        $('#weightedTestAverage').text("Weighted Test Average: " + weightedTestAverage.toFixed(2));
+        $('#bucket').text("Bucket: " + bucket.toFixed(2));
+        $('#homeworkExtraCredit').text("Homework Extra Credit: " + homeworkExtraCredit.toFixed(2));
+
+        $('.finalScore').removeClass('d-none');
+
+
+    }
+</script>
+</body>
+</html>
