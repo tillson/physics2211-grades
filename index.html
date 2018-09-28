@@ -137,7 +137,16 @@ Reading Assignments
                             <label>Test 4</label>
                             <input class="form-control" type="number" value="" id="test4-paste">
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="overwrite">
+                            <label class="form-check-label" for="overwrite">
+                                Overwrite "Manual Entry" fields with pasted data
+                                 (useful for testing various scores)
+                            </label>
+                            <br><br>
+                        </div>
                         <button id="submitPaste" class="btn btn-success">Calculate</button>
+
                     </div>
                 </div>
 
@@ -164,14 +173,14 @@ Reading Assignments
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="text/javascript">
 $('#submit').click(function() {
-    calculate(false);
+    calculate(false, false);
 })
 
 $('#submitPaste').click(function() {
-    calculate(true);
+    calculate(true, $('#overwrite').is(':checked'));
 })
 
-function calculate(pasteTab) {
+function calculate(pasteTab, overwrite) {
 
     var test1 = parseFloat($('#test1').val());
     var test2 = parseFloat($('#test2').val());
@@ -202,50 +211,49 @@ function calculate(pasteTab) {
                 }
                 switch(k) {
                     case 0:
-                    test1 = score;
-                    test2 = score;
-                    test3 = score;
-                    test4 = score;
-                    break;
+                        test1 = score;
+                        test2 = score;
+                        test3 = score;
+                        test4 = score;
+                        break;
                     case 1:
-                    if (score == 0) {
-                        finalExam = test1;
-                    } else {
-                        finalExam = score;
-                    }
-                    break;
+                        if (score == 0) {
+                            finalExam = test1;
+                        } else {
+                            finalExam = score;
+                        }
+                        break;
                     case 2:
-                    labParticipation = score;
-                    break;
+                        labParticipation = score;
+                        break;
                     case 3:
-                    labQuizzes = score;
-                    break;
+                        labQuizzes = score;
+                        break;
                     case 4:
-                    homework = score;
-                    break;
+                        homework = score;
+                        break;
                     case 5:
-                    classParticipation = score;
-                    break;
+                        classParticipation = score;
+                        break;
                     case 6:
-                    optionalAssignments = score;
-                    break;
+                        optionalAssignments = score;
+                        break;
                     case 7:
-                    wikiResource = score;
-                    break;
+                        wikiResource = score;
+                        break;
                     case 8:
-                    publicLectureReview = score;
-                    break;
-                    case 8:
-                    readingAssignments = score;
-                    break;
+                        publicLectureReview = score;
+                        break;
+                    case 9:
+                        readingAssignments = score;
+                        break;
                     default:
-                    break;
+                        break;
                 }
                 k++;
             }
         }
         if ($('#test1-paste').val()) {
-            console.log(1);
             test1 = parseFloat($('#test1-paste').val());
         }
         if ($('#test2-paste').val()) {
@@ -256,6 +264,21 @@ function calculate(pasteTab) {
         }
         if ($('#test4-paste').val()) {
             test4 = parseFloat($('#test4-paste').val());
+        }
+        if (overwrite) {
+            $('#test1').val(test1);
+            $('#test2').val(test2);
+            $('#test3').val(test3);
+            $('#test4').val(test4);
+            $('#finalExam').val(finalExam);
+            $('#readingAssignments').val(readingAssignments);
+            $('#publicLectureReview').val(publicLectureReview);
+            $('#wikiResource').val(wikiResource);
+            $('#optionalAssignments').val(optionalAssignments);
+            $('#classParticipation').val(classParticipation);
+            $('#labQuizzes').val(labQuizzes);
+            $('#labParticipation').val(labParticipation);
+            $('#homework').val(homework);
         }
     }
 
