@@ -13,15 +13,92 @@
         <div class="row">
             <div class="col">
             </div>
-            <div class="col-6">
-                <div class="form">
-                    <div class="form-group">
-                    <h4>Paste the final averages section of your Canvas grade page</h4>
-                    <label class="text-secondary">Note, pasting your final
-                        averages will not account for test weighting.
-                        Manually enter your data for a more accurate grade.
-                     </label>
-                      <textarea class="form-control" rows="5" id="pasted" placeholder="Tests
+            <div class="col-7">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="true">Manual Entry</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="paste-tab" data-toggle="tab" href="#paste" role="tab" aria-controls="paste" aria-selected="false">Paste from Canvas</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="manual" role="tabpanel" aria-labelledby="manual-tab">
+                        <div class="form">
+                            <br>
+                            <h2>Manual Entry</h2>
+                            <!--- Tests --->
+                            <h3>Tests</h3>
+                            <div class="form-group">
+                                <label>Test 1</label>
+                                <input class="form-control" type="number" value="74.19" id="test1">
+                            </div>
+                            <div class="form-group">
+                                <label>Test 2</label>
+                                <input class="form-control" type="number" value="74.19" id="test2">
+                            </div>
+                            <div class="form-group">
+                                <label>Test 3</label>
+                                <input class="form-control" type="number" value="74.19" id="test3">
+                            </div>
+                            <div class="form-group">
+                                <label>Test 4</label>
+                                <input class="form-control" type="number" value="74.19" id="test4">
+                            </div>
+                            <div class="form-group">
+                                <label>Final Exam</label>
+                                <input class="form-control" type="number" value="74.19" id="finalExam">
+                            </div>
+                            <!--- Labs --->
+                            <h3>Lab</h3>
+                            <div class="form-group">
+                                <label>Lab Participation</label>
+                                <input class="form-control" type="number" value="100" id="labParticipation">
+                            </div>
+                            <div class="form-group">
+                                <label>Lab Quizzes</label>
+                                <input class="form-control" type="number" value="46" id="labQuizzes">
+                            </div>
+                            <!--- The Bucket --->
+                            <h3>"The Bucket"</h3>
+                            <div class="form-group">
+                                <label>Homework</label>
+                                <input class="form-control" type="number" value="88.13" id="homework">
+                            </div>
+                            <div class="form-group">
+                                <label>Class Participation</label>
+                                <input class="form-control" type="number" value="90" id="classParticipation">
+                            </div>
+                            <div class="form-group">
+                                <label>Optional Assignments</label>
+                                <input class="form-control" type="number" value="31.03" id="optionalAssignments">
+                            </div>
+                            <div class="form-group">
+                                <label>Wiki Resource</label>
+                                <input class="form-control" type="number" value="0" id="wikiResource">
+                            </div>
+                            <div class="form-group">
+                                <label>Public Lecture Review</label>
+                                <input class="form-control" type="number" value="0" id="publicLectureReview">
+                            </div>
+                            <div class="form-group">
+                                <label>Reading Assignments</label>
+                                <input class="form-control" type="number" value="91.48" id="readingAssignments">
+                            </div>
+                            <button id="submit" class="btn btn-success">Calculate</button>
+                        </div>
+                    </div>
+                    <!--- Paste Tab --->
+                    <div class="tab-pane fade" id="paste" role="tabpanel" aria-labelledby="paste-tab">
+                        <div class="form-group">
+                            <br>
+                            <h4>Paste the final averages section of your Canvas grade page</h4>
+                            <label class="text-secondary">Note, pasting your final
+                                averages will not account for test weighting.
+                                You can optionally fill out the test fields below
+                                the text box for a more accurate calculation.
+                            </label>
+                            <textarea class="form-control" rows="5" id="pasted" placeholder="Tests
 90%	90.00 / 100.00
 Final Exam
 N/A	0.00 / 0.00
@@ -42,207 +119,183 @@ N/A	0.00 / 0.00
 Reading Assignments
 100%	600.00 / 600.00
 "></textarea>
+                        </div>
+                        <h4>Optional: Individual Test Scores</h4>
+                        <div class="form-group">
+                            <label>Test 1</label>
+                            <input class="form-control" type="number" value="" id="test1-paste">
+                        </div>
+                        <div class="form-group">
+                            <label>Test 2</label>
+                            <input class="form-control" type="number" value="" id="test2-paste">
+                        </div>
+                        <div class="form-group">
+                            <label>Test 3</label>
+                            <input class="form-control" type="number" value="" id="test3-paste">
+                        </div>
+                        <div class="form-group">
+                            <label>Test 4</label>
+                            <input class="form-control" type="number" value="" id="test4-paste">
+                        </div>
+                        <button id="submitPaste" class="btn btn-success">Calculate</button>
                     </div>
+                </div>
 
-                    <br>
-                    <br>
-                    <h4>Alternatively, enter the data manually</h4>
-                    <!--- Tests --->
-                    <h3>Tests</h3>
-                    <div class="form-group">
-                        <label>Test 1</label>
-                        <input class="form-control" type="number" value="74.19" id="test1">
-                    </div>
-                    <div class="form-group">
-                        <label>Test 2</label>
-                        <input class="form-control" type="number" value="74.19" id="test2">
-                    </div>
-                    <div class="form-group">
-                        <label>Test 3</label>
-                        <input class="form-control" type="number" value="74.19" id="test3">
-                    </div>
-                    <div class="form-group">
-                        <label>Test 4</label>
-                        <input class="form-control" type="number" value="74.19" id="test4">
-                    </div>
-                    <div class="form-group">
-                        <label>Final Exam</label>
-                        <input class="form-control" type="number" value="74.19" id="finalExam">
-                    </div>
-                    <!--- Labs --->
-                    <h3>Lab</h3>
-                    <div class="form-group">
-                        <label>Lab Participation</label>
-                        <input class="form-control" type="number" value="100" id="labParticipation">
-                    </div>
-                    <div class="form-group">
-                        <label>Lab Quizzes</label>
-                        <input class="form-control" type="number" value="46" id="labQuizzes">
-                    </div>
-                    <!--- The Bucket --->
-                    <h3>"The Bucket"</h3>
-                    <div class="form-group">
-                        <label>Homework</label>
-                        <input class="form-control" type="number" value="88.13" id="homework">
-                    </div>
-                    <div class="form-group">
-                        <label>Class Participation</label>
-                        <input class="form-control" type="number" value="90" id="classParticipation">
-                    </div>
-                    <div class="form-group">
-                        <label>Optional Assignments</label>
-                        <input class="form-control" type="number" value="31.03" id="optionalAssignments">
-                    </div>
-                    <div class="form-group">
-                        <label>Wiki Resource</label>
-                        <input class="form-control" type="number" value="0" id="wikiResource">
-                    </div>
-                    <div class="form-group">
-                        <label>Public Lecture Review</label>
-                        <input class="form-control" type="number" value="0" id="publicLectureReview">
-                    </div>
-                    <div class="form-group">
-                        <label>Reading Assignments</label>
-                        <input class="form-control" type="number" value="91.48" id="readingAssignments">
-                    </div>
-                    <button id="submit" class="btn btn-success">Calculate</button>
-                    <br><br>
-                    <div class="finalScore d-none">
-                        <h2 id="courseGrade">Course Grade: -1</h2>
-                        <h4 id="weightedTestAverage">Weighted Test Average: -1</h4>
-                        <h4 id="bucket">Bucket: 93</h4>
-                        <h4 id="homeworkExtraCredit">Homework Extra Credit: -1</h4>
-                    </div>
+                <br><br>
+                <div class="finalScore d-none">
+                    <h2 id="courseGrade">Course Grade: -1</h2>
+                    <h4 id="weightedTestAverage">Weighted Test Average: -1</h4>
+                    <h4 id="bucket">Bucket: 93</h4>
+                    <h4 id="homeworkExtraCredit">Homework Extra Credit: -1</h4>
                 </div>
             </div>
             <div class="col">
             </div>
         </div>
-        <footer class="text-center">
-            <hr>
-            <a href="https://github.com/tillson/whats-my-grade-physics">github</a>
-            <br><br>
-        </footer>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    $('#submit').click(function() {
-        calculate();
-    })
+    <footer class="text-center">
+        <hr>
+        <a href="https://github.com/tillson/whats-my-grade-physics">github</a>
+        <br><br>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$('#submit').click(function() {
+    calculate(false);
+})
 
-    function calculate() {
+$('#submitPaste').click(function() {
+    calculate(true);
+})
 
-        var test1 = parseFloat($('#test1').val());
-        var test2 = parseFloat($('#test2').val());
-        var test3 = parseFloat($('#test3').val());
-        var test4 = parseFloat($('#test4').val());
-        var finalExam = parseFloat($('#finalExam').val());
-        var labParticipation = parseFloat($('#labParticipation').val());
-        var labQuizzes = parseFloat($('#labQuizzes').val());
-        var homework = parseFloat($('#homework').val());
-        var classParticipation = parseFloat($('#classParticipation').val());
-        var optionalAssignments = parseFloat($('#optionalAssignments').val());
-        var wikiResource = parseFloat($('#wikiResource').val());
-        var publicLectureReview = parseFloat($('#publicLectureReview').val());
-        var readingAssignments = parseFloat($('#readingAssignments').val());
+function calculate(pasteTab) {
 
-        if ($('#pasted').val()) {
-            console.log('using pasted')
-            var pasted = $('#pasted').val().replaceAll('\t', ' ').replaceAll('\n', ' ');
-            var k = 0;
-            for (var i = 0; i < pasted.split(' ').length; i++) {
-                var word = pasted.split(' ')[i].trim();
-                if (word.indexOf('N/A') > -1 || word.indexOf('%') > -1) {
-                    var score = 0;
-                    if (word != 'N/A') {
-                        score = parseFloat(word.substring(0, word.length - 1));
-                    }
-                    console.log('i= ' +i+': ' +score);
-                    switch(k) {
-                        case 0:
-                            test1 = score;
-                            test2 = score;
-                            test3 = score;
-                            test4 = score;
-                            break;
-                        case 1:
-                            if (score == 0) {
-                                finalExam = test1;
-                            } else {
-                                finalExam = score;
-                            }
-                            break;
-                        case 2:
-                            labParticipation = score;
-                            break;
-                        case 3:
-                            labQuizzes = score;
-                            break;
-                        case 4:
-                            homework = score;
-                            break;
-                        case 5:
-                            classParticipation = score;
-                            break;
-                        case 6:
-                            optionalAssignments = score;
-                            break;
-                        case 7:
-                            wikiResource = score;
-                            break;
-                        case 8:
-                            publicLectureReview = score;
-                            break;
-                        case 8:
-                            readingAssignments = score;
-                            break;
-                        default:
-                            break;
-                    }
-                    k++;
+    var test1 = parseFloat($('#test1').val());
+    var test2 = parseFloat($('#test2').val());
+    var test3 = parseFloat($('#test3').val());
+    var test4 = parseFloat($('#test4').val());
+    var finalExam = parseFloat($('#finalExam').val());
+    var labParticipation = parseFloat($('#labParticipation').val());
+    var labQuizzes = parseFloat($('#labQuizzes').val());
+    var homework = parseFloat($('#homework').val());
+    var classParticipation = parseFloat($('#classParticipation').val());
+    var optionalAssignments = parseFloat($('#optionalAssignments').val());
+    var wikiResource = parseFloat($('#wikiResource').val());
+    var publicLectureReview = parseFloat($('#publicLectureReview').val());
+    var readingAssignments = parseFloat($('#readingAssignments').val());
+
+    if (pasteTab) {
+        if (!$('#pasted').val()) {
+            return;
+        }
+        var pasted = $('#pasted').val().replaceAll('\t', ' ').replaceAll('\n', ' ');
+        var k = 0;
+        for (var i = 0; i < pasted.split(' ').length; i++) {
+            var word = pasted.split(' ')[i].trim();
+            if (word.indexOf('N/A') > -1 || word.indexOf('%') > -1) {
+                var score = 0;
+                if (word != 'N/A') {
+                    score = parseFloat(word.substring(0, word.length - 1));
                 }
+                switch(k) {
+                    case 0:
+                    test1 = score;
+                    test2 = score;
+                    test3 = score;
+                    test4 = score;
+                    break;
+                    case 1:
+                    if (score == 0) {
+                        finalExam = test1;
+                    } else {
+                        finalExam = score;
+                    }
+                    break;
+                    case 2:
+                    labParticipation = score;
+                    break;
+                    case 3:
+                    labQuizzes = score;
+                    break;
+                    case 4:
+                    homework = score;
+                    break;
+                    case 5:
+                    classParticipation = score;
+                    break;
+                    case 6:
+                    optionalAssignments = score;
+                    break;
+                    case 7:
+                    wikiResource = score;
+                    break;
+                    case 8:
+                    publicLectureReview = score;
+                    break;
+                    case 8:
+                    readingAssignments = score;
+                    break;
+                    default:
+                    break;
+                }
+                k++;
             }
         }
-
-        var bucket = homework * (7 / 5) * 0.05 +
-            classParticipation * 0.04 +
-            optionalAssignments * 0.03 +
-            publicLectureReview * 0.01 +
-            wikiResource * 0.02 +
-            readingAssignments * 0.01;
-        bucket = bucket / 0.1;
-        if (bucket > 100) {
-            bucket = 100;
+        if ($('#test1-paste').val()) {
+            console.log(1);
+            test1 = parseFloat($('#test1-paste').val());
         }
+        if ($('#test2-paste').val()) {
+            test2 = parseFloat($('#test2-paste').val());
+        }
+        if ($('#test3-paste').val()) {
+            test3 = parseFloat($('#test3-paste').val());
+        }
+        if ($('#test4-paste').val()) {
+            test4 = parseFloat($('#test4-paste').val());
+        }
+    }
 
-        var homeworkExtraCredit =
-            Math.max(0, Math.min(
-                5,
-                homework * (7 / 5) * 0.05 +
-                classParticipation * 0.04 +
-                optionalAssignments * 0.03 +
-                wikiResource * 0.01 +
-                publicLectureReview * 0.02 +
-                readingAssignments * 0.01
-                - homework * (7 / 5) * 0.05
-            ) + homework * (7 / 5) * 0.05 - 10) / 2 * 100;
+    var bucket = homework * (7 / 5) * 0.05 +
+    classParticipation * 0.04 +
+    optionalAssignments * 0.03 +
+    publicLectureReview * 0.01 +
+    wikiResource * 0.02 +
+    readingAssignments * 0.01;
+    bucket = bucket / 0.1;
+    if (bucket > 100) {
+        bucket = 100;
+    }
 
-        var sortedTestAverages = [test1, test2, test3, test4].sort();
-        var weightedTestAverage = (
-            sortedTestAverages[0] * 0.06 +
-            sortedTestAverages[1] * 0.09 +
-            sortedTestAverages[2] * 0.12 +
-            sortedTestAverages[3] * 0.18) / 0.45;
+    var homeworkExtraCredit =
+    Math.max(0, Math.min(
+        5,
+        homework * (7 / 5) * 0.05 +
+        classParticipation * 0.04 +
+        optionalAssignments * 0.03 +
+        wikiResource * 0.01 +
+        publicLectureReview * 0.02 +
+        readingAssignments * 0.01
+        - homework * (7 / 5) * 0.05
+    ) + homework * (7 / 5) * 0.05 - 10) / 2 * 100;
+
+    var sortedTestAverages = [test1, test2, test3, test4].sort();
+    var weightedTestAverage = (
+        sortedTestAverages[0] * 0.06 +
+        sortedTestAverages[1] * 0.09 +
+        sortedTestAverages[2] * 0.12 +
+        sortedTestAverages[3] * 0.18) / 0.45;
 
         var finalGrade =
-            finalExam * 0.25 +
-            weightedTestAverage * 0.45 +
-            labParticipation * 0.15 +
-            labQuizzes * 0.05 +
-            bucket * 0.1 +
-            homeworkExtraCredit * 0.02;
+        finalExam * 0.25 +
+        weightedTestAverage * 0.45 +
+        labParticipation * 0.15 +
+        labQuizzes * 0.05 +
+        bucket * 0.1 +
+        homeworkExtraCredit * 0.02;
 
         $('#courseGrade').text("Course Grade: " + finalGrade.toFixed(2));
         $('#weightedTestAverage').text("Weighted Test Average: " + weightedTestAverage.toFixed(2));
