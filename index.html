@@ -41,10 +41,9 @@ Public Lecture Review
 N/A	0.00 / 0.00
 Reading Assignments
 100%	600.00 / 600.00
-">
-                    </textarea>
+"></textarea>
                     </div>
-                    <button id="submit" class="btn btn-success">Calculate</button>
+
                     <br>
                     <br>
                     <h4>Alternatively, enter the data manually</h4>
@@ -149,7 +148,7 @@ Reading Assignments
         var publicLectureReview = parseFloat($('#publicLectureReview').val());
         var readingAssignments = parseFloat($('#readingAssignments').val());
 
-        if ($('#pasted').val() != '') {
+        if ($('#pasted').val()) {
             console.log('using pasted')
             var pasted = $('#pasted').val().replaceAll('\t', ' ').replaceAll('\n', ' ');
             var k = 0;
