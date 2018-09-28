@@ -15,6 +15,39 @@
             </div>
             <div class="col-6">
                 <div class="form">
+                    <div class="form-group">
+                    <h4>Paste the final averages section of your Canvas grade page</h4>
+                    <label class="text-secondary">Note, pasting your final
+                        averages will not account for test weighting.
+                        Manually enter your data for a more accurate grade.
+                     </label>
+                      <textarea class="form-control" rows="5" id="pasted" placeholder="Tests
+90%	90.00 / 100.00
+Final Exam
+N/A	0.00 / 0.00
+Lab Participation
+100%	500.00 / 500.00
+Lab Quizzes
+100%	100.00 / 100.00
+Homework
+75.67%	752.15 / 994.00
+Class Participation
+100.00%	11.00 / 11.00
+Optional Assignments
+59.12%	118.23 / 200.00
+Wiki Resource
+N/A	0.00 / 0.00
+Public Lecture Review
+N/A	0.00 / 0.00
+Reading Assignments
+100%	600.00 / 600.00
+">
+                    </textarea>
+                    </div>
+                    <button id="submit" class="btn btn-success">Calculate</button>
+                    <br>
+                    <br>
+                    <h4>Alternatively, enter the data manually</h4>
                     <!--- Tests --->
                     <h3>Tests</h3>
                     <div class="form-group">
@@ -101,6 +134,7 @@
     })
 
     function calculate() {
+
         var test1 = parseFloat($('#test1').val());
         var test2 = parseFloat($('#test2').val());
         var test3 = parseFloat($('#test3').val());
@@ -114,6 +148,64 @@
         var wikiResource = parseFloat($('#wikiResource').val());
         var publicLectureReview = parseFloat($('#publicLectureReview').val());
         var readingAssignments = parseFloat($('#readingAssignments').val());
+
+        if ($('#pasted').val() != '') {
+            console.log('using pasted')
+            var pasted = $('#pasted').val().replaceAll('\t', ' ').replaceAll('\n', ' ');
+            var k = 0;
+            for (var i = 0; i < pasted.split(' ').length; i++) {
+                var word = pasted.split(' ')[i].trim();
+                if (word.indexOf('N/A') > -1 || word.indexOf('%') > -1) {
+                    var score = 0;
+                    if (word != 'N/A') {
+                        score = parseFloat(word.substring(0, word.length - 1));
+                    }
+                    console.log('i= ' +i+': ' +score);
+                    switch(k) {
+                        case 0:
+                            test1 = score;
+                            test2 = score;
+                            test3 = score;
+                            test4 = score;
+                            break;
+                        case 1:
+                            if (score == 0) {
+                                finalExam = test1;
+                            } else {
+                                finalExam = score;
+                            }
+                            break;
+                        case 2:
+                            labParticipation = score;
+                            break;
+                        case 3:
+                            labQuizzes = score;
+                            break;
+                        case 4:
+                            homework = score;
+                            break;
+                        case 5:
+                            classParticipation = score;
+                            break;
+                        case 6:
+                            optionalAssignments = score;
+                            break;
+                        case 7:
+                            wikiResource = score;
+                            break;
+                        case 8:
+                            publicLectureReview = score;
+                            break;
+                        case 8:
+                            readingAssignments = score;
+                            break;
+                        default:
+                            break;
+                    }
+                    k++;
+                }
+            }
+        }
 
         var bucket = homework * (7 / 5) * 0.05 +
             classParticipation * 0.04 +
@@ -139,7 +231,6 @@
             ) + homework * (7 / 5) * 0.05 - 10) / 2 * 100;
 
         var sortedTestAverages = [test1, test2, test3, test4].sort();
-        console.log(sortedTestAverages);
         var weightedTestAverage = (
             sortedTestAverages[0] * 0.06 +
             sortedTestAverages[1] * 0.09 +
@@ -160,9 +251,14 @@
         $('#homeworkExtraCredit').text("Homework Extra Credit: " + homeworkExtraCredit.toFixed(2));
 
         $('.finalScore').removeClass('d-none');
-
-
     }
+
+    // (https://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript)
+    String.prototype.replaceAll = function(search, replacement) {
+        var target = this;
+        return target.replace(new RegExp(search, 'g'), replacement);
+    };
+
 </script>
 </body>
 </html>
